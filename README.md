@@ -21,11 +21,15 @@ Infrastructure as Code – Vagrant devbox + stack Odoo/PostgreSQL via Packer (Do
 
 ---
 
+> **Note architecture** : le TP préconise Ubuntu comme base Docker. Ce projet utilise `amazonlinux:2023` pour les images Docker **et** les AMIs afin de garantir la compatibilité ARM64 (Apple Silicon / t4g) et d'uniformiser les scripts d'installation entre les deux cibles.
+
+---
+
 ## Démarrage rapide
 
-### 1. Configurer les credentials
+### 1. Configurer les fichiers d'environnement
 
-Créer le fichier `credentials.sh` à la racine du projet (jamais commité) :
+Créer `credentials.sh` à la racine (jamais commité) :
 
 ```bash
 #!/bin/bash
@@ -33,6 +37,13 @@ export AWS_ACCESS_KEY_ID="AKIA..."
 export AWS_SECRET_ACCESS_KEY="..."
 export AWS_DEFAULT_REGION="eu-west-3"
 export TF_VAR_db_password="odoo_password"
+```
+
+Créer `docker/.env` depuis le template (jamais commité) :
+
+```bash
+cp docker/.env.example docker/.env
+# Éditer les valeurs si besoin
 ```
 
 ### 2. Lancer la devbox
