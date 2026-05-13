@@ -20,6 +20,7 @@ crash.log
 
 # Credentials locaux — ne jamais committer
 credentials.sh
+docker/.env
 
 # Terraform
 terraform/.terraform/
