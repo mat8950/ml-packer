@@ -15,3 +15,16 @@ crash.log
 # For built boxes
 *.box
 .vagrant/
+
+*.log
+
+# Credentials locaux — ne jamais committer
+credentials.sh
+
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/terraform.tfvars
+terraform/keys/

@@ -1,11 +1,7 @@
 #!/bin/bash
 set -e
 
-apt-get update
-apt-get install -y postgresql postgresql-client gosu apt-utils
-apt-get clean
-rm -rf /var/lib/apt/lists/*
+dnf install -y postgresql16-server postgresql16-contrib
 
-# Detect installed PG version and drop the default cluster
-PG_VERSION=$(ls /etc/postgresql/)
-pg_dropcluster --stop "$PG_VERSION" main || true
+dnf clean all
+rm -rf /var/cache/dnf

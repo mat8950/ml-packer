@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+
+sed -i '/^db_host/s/TO_BE_CONFIGURED/${db_host}/' /etc/odoo/odoo.conf
+sed -i '/^db_password/s/TO_BE_CONFIGURED/${db_password}/' /etc/odoo/odoo.conf
+sed -i '/^db_user/s/odoo/${db_user}/' /etc/odoo/odoo.conf
+sed -i '/^db_name/s/odoo/${db_name}/' /etc/odoo/odoo.conf
+
+# Initialisation du schéma Odoo (première installation)
+sudo -u odoo /usr/bin/python3.11 /opt/odoo/odoo/odoo-bin \
+  -c /etc/odoo/odoo.conf \
+  -i base \
+  --stop-after-init
+
+systemctl start odoo
